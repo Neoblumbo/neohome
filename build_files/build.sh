@@ -14,13 +14,14 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc &&
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 
 dnf check-update &&
-sudo dnf install code # or code-insiders
+sudo dnf5 install code # or code-insiders
 
 dnf5 install -y tmux neovim
 
-sudo dnf copr enable avengemedia/dms
-sudo dnf install -y niri dms
+sudo dnf5 -y copr enable avengemedia/dms
+sudo dnf5 -y install niri dms
 systemctl --user add-wants niri.service dms
+dnf5 -y copr disable avengemedia/dms
 
 
 # Use a COPR Example:
